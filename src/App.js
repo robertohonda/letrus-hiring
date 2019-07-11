@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import './App.css';
+import React, { Component } from 'react'
+import './App.css'
 
 export function makeTextWithMistakes(text, mistakes) {
   // ...
@@ -7,15 +7,11 @@ export function makeTextWithMistakes(text, mistakes) {
 
 class App extends Component {
   renderParagraph = (paragraph, i) => {
-    return (
-      <p key={i}>
-        {paragraph}
-      </p>
-    );
-  };
+    return <p key={i}>{paragraph}</p>
+  }
 
   render() {
-    const text = 'Meu texto está erado\nSegundo palagrafo';
+    const text = 'Meu texto está erado\nSegundo palagrafo'
     const mistakes = [
       {
         start: 15,
@@ -27,7 +23,7 @@ class App extends Component {
         end: 16,
         paragraph: 1,
       },
-    ];
+    ]
 
     // ========================================================================
     // Sua tarefa é implementar a função que converte as variáveis `text` e
@@ -38,22 +34,14 @@ class App extends Component {
     // ========================================================================
 
     const textWithMistakes = [
-      [
-        'Meu texto está ',
-        <em>erado</em>
-      ],
-      [
-        'Segundo ',
-        <em>palagrafo</em>
-      ],
-    ];
+      ['Meu texto está ', <em>erado</em>],
+      ['Segundo ', <em>palagrafo</em>],
+    ]
 
     return (
-      <div className="App">
-        {textWithMistakes.map(this.renderParagraph)}
-      </div>
-    );
+      <div className="App">{textWithMistakes.map(this.renderParagraph)}</div>
+    )
   }
 }
 
-export default App;
+export default App

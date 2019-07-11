@@ -1,0 +1,21 @@
+{
+  "parser": "babel-eslint",
+  "extends": [
+    "prettier"
+  ],
+  "plugins": [
+    "react",
+    "prettier"
+  ],
+  "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "singleQuote": true,
+        "semi": false,
+        "arrowParens": "always",
+        "trailingComma": "all"
+      }
+    ]
+  }
+}
