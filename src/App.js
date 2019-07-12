@@ -11,53 +11,36 @@ export const sortMistakes = (mistakes) => {
 }
 
 export const makeTextWithMistakes = (text, mistakes) => {
-  const paragraphs = text.split('\n')
+  const texts = text.split('\n')
   const sortedMistakes = sortMistakes(mistakes)
-  const result = paragraphs.map((paragraph) => [paragraph])
+  const result = texts.map((text) => [text])
+  const startIndexes = new Array(texts.length).fill(0)
 
-  sortedMistakes.forEach((mistake) => {
+  sortedMistakes.forEach((mistake, mistakeIndex) => {
     const { start, end, paragraph } = mistake
-    const resultParagraph = result[paragraph]
-    const selectedParagraph = paragraphs[paragraph]
+    const text = texts[paragraph]
+    const seletectedParagraph = result[paragraph]
+    const selectedStart = startIndexes[paragraph]
+    const newTexts = []
 
-    if (resultParagraph.length === 1)
-      resultParagraph[0] = selectedParagraph.slice(0, start)
-    else {
-      const lastIndex = resultParagraph.length - 1
-      // console.log(mistake, resultParagraph)
-      // console.log('aaaaa', JSON.stringify(selectedParagraph))
-      console.log(mistake, resultParagraph[lastIndex])
-      resultParagraph.push(
-        selectedParagraph.slice(resultParagraph[lastIndex].length, start),
-      )
-    }
+    seletectedParagraph.pop()
 
-    resultParagraph.push(<em>{selectedParagraph.slice(start, end)}</em>)
+    if (start > selectedStart) newTexts.push(text.slice(selectedStart, start))
+    newTexts.push(<em key={mistakeIndex}>{text.slice(start, end)}</em>)
+    newTexts.push(text.slice(end))
+
+    seletectedParagraph.push(...newTexts)
+    startIndexes[paragraph] = end
   })
 
   return result
 }
 
-// console.log(
-//   sortMistakes([
-//     {
-//       start: 15,
-//       end: 20,
-//       paragraph: 0,
-//     },
-//     {
-//       start: 8,
-//       end: 16,
-//       paragraph: 1,
-//     },
-//   ]),
-// )
-
 class App extends Component {
   renderParagraph = (paragraph, i) => {
     return <p key={i}>{paragraph}</p>
   }
-  // ...
+
   render() {
     const text = 'Meu texto está erado\nSegundo palagrafo'
     const mistakes = [
@@ -67,8 +50,13 @@ class App extends Component {
         paragraph: 0,
       },
       {
+        start: 4,
+        end: 9,
+        paragraph: 0,
+      },
+      {
         start: 0,
-        end: 5,
+        end: 3,
         paragraph: 0,
       },
       {
@@ -92,8 +80,6 @@ class App extends Component {
     // ]
 
     const textWithMistakes = makeTextWithMistakes(text, mistakes)
-
-    // console.log(textWithMistakes)
 
     return (
       <div className="App">{textWithMistakes.map(this.renderParagraph)}</div>
