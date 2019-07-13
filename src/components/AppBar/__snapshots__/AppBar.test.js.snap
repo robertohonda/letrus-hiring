@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AppBar should render correctly 1`] = `
+<WithStyles(ForwardRef(AppBar))>
+  <WithStyles(ForwardRef(Toolbar))
+    className="makeStyles-toolbar-1"
+  >
+    <img
+      alt="logo"
+      className="makeStyles-logo-2"
+      src="logo.svg"
+    />
+  </WithStyles(ForwardRef(Toolbar))>
+</WithStyles(ForwardRef(AppBar))>
+`;
