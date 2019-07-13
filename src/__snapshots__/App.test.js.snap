@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App Should render correctly 1`] = `
+<div
+  className="App"
+>
+  <p
+    key="0"
+  >
+    Meu texto está 
+    <em
+      key="0"
+    >
+      erado
+    </em>
+  </p>
+  <p
+    key="1"
+  >
+    Segundo 
+    <em
+      key="1"
+    >
+      palagrafo
+    </em>
+  </p>
+</div>
+`;
