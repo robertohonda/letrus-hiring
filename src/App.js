@@ -50,16 +50,6 @@ class App extends Component {
         paragraph: 0,
       },
       {
-        start: 4,
-        end: 9,
-        paragraph: 0,
-      },
-      {
-        start: 0,
-        end: 3,
-        paragraph: 0,
-      },
-      {
         start: 8,
         end: 16,
         paragraph: 1,
