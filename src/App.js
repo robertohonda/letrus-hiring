@@ -27,7 +27,7 @@ export const makeTextWithMistakes = (text, mistakes) => {
 
     if (start > selectedStart) newTexts.push(text.slice(selectedStart, start))
     newTexts.push(<em key={mistakeIndex}>{text.slice(start, end)}</em>)
-    newTexts.push(text.slice(end))
+    if (end < text.length) newTexts.push(text.slice(end))
 
     seletectedParagraph.push(...newTexts)
     startIndexes[paragraph] = end
